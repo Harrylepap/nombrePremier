@@ -10,31 +10,33 @@ namespace NombrePremier
     {
         static void Main(string[] args)
         {
-            int nombreViaUtilisateur, i, resultat;
-            bool etat = true;
+            int diviseur, nbr, nombreViaUser, compt = 0;
+            bool Est_premier;
+            Console.Write("Entrez un nombres :  ");
+            nombreViaUser = int.Parse(Console.ReadLine());
 
-            System.Console.Write("Entrez un nombre : ");
-            nombreViaUtilisateur = int.Parse(System.Console.ReadLine());
-
-            for(i = 2; i <= nombreViaUtilisateur / 2; i++)
+            for (nbr = 2; nbr <= nombreViaUser; nbr++)
             {
-                resultat = nombreViaUtilisateur % i;
-                if(resultat == 0)
+                diviseur = 2;
+                Est_premier = true;
+                do
                 {
-                    etat = false;
-                    break;
+                    if (nbr % diviseur == 0)
+                    {
+                        Est_premier = false;
+                    }
+                    else
+                    {
+                        diviseur = diviseur + 1;
+                    }
+                } while ((diviseur <= nbr / 2) && (Est_premier == true));
+                if (Est_premier)
+                {
+                    compt++;
+                    Console.Write(nbr + ", ");
                 }
             }
-            if (etat)
-            {
-                System.Console.WriteLine(nombreViaUtilisateur + " est un nombre premier.");
-            }
-            else
-            {
-                System.Console.WriteLine(nombreViaUtilisateur + " n'est pas un nombre premier.");
-            }
-
-            System.Console.ReadLine();
+            Console.ReadLine();
         }
     }
 }
