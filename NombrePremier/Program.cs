@@ -10,7 +10,30 @@ namespace NombrePremier
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello World");
+            int nombreViaUtilisateur, i, resultat;
+            bool etat = true;
+
+            System.Console.Write("Entrez un nombre : ");
+            nombreViaUtilisateur = int.Parse(System.Console.ReadLine());
+
+            for(i = 2; i <= nombreViaUtilisateur / 2; i++)
+            {
+                resultat = nombreViaUtilisateur % i;
+                if(resultat == 0)
+                {
+                    etat = false;
+                    break;
+                }
+            }
+            if (etat)
+            {
+                System.Console.WriteLine(nombreViaUtilisateur + " est un nombre premier.");
+            }
+            else
+            {
+                System.Console.WriteLine(nombreViaUtilisateur + " n'est pas un nombre premier.");
+            }
+
             System.Console.ReadLine();
         }
     }
